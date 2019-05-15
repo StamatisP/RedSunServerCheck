@@ -34,9 +34,14 @@ namespace RedSunServerCheck
 
         IPAddress raidenAddr = IPAddress.Parse("95.172.92.5");
         IPEndPoint raidenEndpoint;
+        A2S_INFO raidenInfo;
 
         IPAddress armstrongAddr = IPAddress.Parse("192.223.24.11");
         IPEndPoint armstrongEndpoint;
+        A2S_INFO armstrongInfo;
+
+        string[] preferredGamemodes = { "Deathrun", "Dodgeball", "Randomizer" };
+        int preferredPlayers = 2;
 
         public Form1()
         {
@@ -61,6 +66,20 @@ namespace RedSunServerCheck
 
         }
 
+        bool CheckIfFilterMatch(ServerInfo info)
+        {
+            /*if (info.gamemode == filter.gamemode && info.players >= filter.players) {
+                return true;
+            }*/
+            if (preferredGamemodes.Contains(info.gamemode) && info.players >= preferredPlayers)
+            {
+                Console.WriteLine("server passed filter");
+                return true;
+            }
+            Console.WriteLine("server failed filter, " + info.gamemode + " " + info.players + " >= " + preferredPlayers);
+            return false;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             RequestInfo();
@@ -68,17 +87,28 @@ namespace RedSunServerCheck
 
         public void RequestInfo()
         {
-            A2S_INFO raidenInfo = new A2S_INFO(raidenEndpoint);
-            A2S_INFO armstrongInfo = new A2S_INFO(armstrongEndpoint);
+            raidenInfo = new A2S_INFO(raidenEndpoint);
+            armstrongInfo = new A2S_INFO(armstrongEndpoint);
 
             textBox1.Text = "";
             FormatTextbox((ServerInfo)raidenInfo);
             FormatTextbox((ServerInfo)armstrongInfo);
+            if (CheckIfFilterMatch(raidenInfo))
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Stamos\source\repos\RedSunServerCheck\RedSunServerCheck\no.wav");
+                player.Play();
+                Console.WriteLine("oh hell yea server available");
+            }
         }
 
         void RequestInfoTimer(Object source, EventArgs e)
         {
             RequestInfo();
+            if (CheckIfFilterMatch(raidenInfo))
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Stamos\source\repos\RedSunServerCheck\RedSunServerCheck\no.wav");
+                player.Play();
+            }
         }
             
         void FormatTextbox(ServerInfo info)
