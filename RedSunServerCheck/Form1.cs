@@ -48,9 +48,6 @@ namespace RedSunServerCheck
         IPEndPoint armstrongEndpoint;
         A2S_INFO armstrongInfo;
 
-        string[] preferredGamemodes = { "Versus Saxton Hale", "Dodgeball", "Randomizer", "Team Fortress", "Stop That Tank", "Tank Race", "Smash Fortress", "Freeze Tag", "Glass Attack", "Team Battles" };
-        int preferredPlayers = 2;
-
         public Form1()
         {
             InitializeComponent();
@@ -83,13 +80,13 @@ namespace RedSunServerCheck
             /*if (info.gamemode == filter.gamemode && info.players >= filter.players) {
                 return true;
             }*/
-            
-            if (checkedListBox1.CheckedItems.Contains(info.gamemode) && info.players >= preferredPlayers)
+
+            if (checkedListBox1.CheckedItems.Contains(info.gamemode) && info.players >= (int) numericUpDown2.Value)
             {
                 Console.WriteLine("server passed filter");
                 return true;
             }
-            Console.WriteLine("server failed filter, " + info.gamemode + " " + info.players + " >= " + preferredPlayers);
+            Console.WriteLine("server failed filter, " + info.gamemode + " " + info.players + " >= " + numericUpDown2.Value);
             return false;
         }
 
