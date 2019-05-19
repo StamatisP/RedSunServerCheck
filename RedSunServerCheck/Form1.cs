@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Timers;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace RedSunServerCheck
 {
@@ -30,17 +32,23 @@ namespace RedSunServerCheck
             }
         }
 
+        /*public class JsonGamemodes
+        {
+            public string gamemode { get; set; }
+            public bool enabled { get; set; }
+        }*/
+
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         IPAddress raidenAddr = IPAddress.Parse("95.172.92.5");
         IPEndPoint raidenEndpoint;
         A2S_INFO raidenInfo;
-
+        
         IPAddress armstrongAddr = IPAddress.Parse("192.223.24.11");
         IPEndPoint armstrongEndpoint;
         A2S_INFO armstrongInfo;
 
-        string[] preferredGamemodes = { "Deathrun", "Dodgeball", "Randomizer" };
+        string[] preferredGamemodes = { "Versus Saxton Hale", "Dodgeball", "Randomizer", "Team Fortress", "Stop That Tank", "Tank Race", "Smash Fortress", "Freeze Tag", "Glass Attack", "Team Battles" };
         int preferredPlayers = 2;
 
         public Form1()
@@ -57,11 +65,15 @@ namespace RedSunServerCheck
             {
                 Console.WriteLine(ex);
             }
-            timer.Interval = 5000;
+            timer.Interval = (int) numericUpDown1.Value * 1000;
             timer.Start();
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\prefs.json"))
+            {
+                LoadPreferences();
+            }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        void Form1_Load(object sender, System.EventArgs e)
         {
 
         }
@@ -71,7 +83,8 @@ namespace RedSunServerCheck
             /*if (info.gamemode == filter.gamemode && info.players >= filter.players) {
                 return true;
             }*/
-            if (preferredGamemodes.Contains(info.gamemode) && info.players >= preferredPlayers)
+            
+            if (checkedListBox1.CheckedItems.Contains(info.gamemode) && info.players >= preferredPlayers)
             {
                 Console.WriteLine("server passed filter");
                 return true;
@@ -99,15 +112,19 @@ namespace RedSunServerCheck
                 player.Play();
                 Console.WriteLine("oh hell yea server available");
             }
+            if (CheckIfFilterMatch(armstrongInfo))
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Stamos\source\repos\RedSunServerCheck\RedSunServerCheck\no.wav");
+                player.Play();
+                Console.WriteLine("oh hell yea server available");
+            }
         }
 
         void RequestInfoTimer(Object source, EventArgs e)
         {
-            RequestInfo();
-            if (CheckIfFilterMatch(raidenInfo))
+            if (checkBox1.Checked)
             {
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Stamos\source\repos\RedSunServerCheck\RedSunServerCheck\no.wav");
-                player.Play();
+                RequestInfo();
             }
         }
             
@@ -124,6 +141,40 @@ namespace RedSunServerCheck
         {
             textBox1.AppendText(line);
             textBox1.AppendText(Environment.NewLine);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            timer.Interval = (int) numericUpDown1.Value * 1000;
+        }
+
+        void SavePreferences()
+        {
+            string output = JsonConvert.SerializeObject(checkedListBox1.CheckedItems);
+            File.WriteAllText(Directory.GetCurrentDirectory() + @"\prefs.json", output);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SavePreferences();
+            Console.WriteLine("closing");
+        }
+
+        void LoadPreferences()
+        {
+            var input = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(Directory.GetCurrentDirectory() + @"\prefs.json"));
+            
+            for (int i = 0; i < input.Count(); i++)
+            {
+                //checkedListBox1.SetItemChecked(i, true);
+                checkedListBox1.SetItemChecked(checkedListBox1.FindString(input[i]), true);
+            }
+            
         }
     }
 }
