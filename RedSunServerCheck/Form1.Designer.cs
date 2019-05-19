@@ -52,7 +52,9 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.SeaShell;
             this.textBox1.Font = new System.Drawing.Font("TF2 Build", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.IndianRed;
             this.textBox1.Location = new System.Drawing.Point(13, 13);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -115,8 +117,9 @@
             "Smash Fortress",
             "Versus Saxton Hale",
             "Stop That Tank",
-            "Tank Race"});
-            this.checkedListBox1.Location = new System.Drawing.Point(336, 207);
+            "Tank Race",
+            "Prop Hunt"});
+            this.checkedListBox1.Location = new System.Drawing.Point(514, 207);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(145, 169);
             this.checkedListBox1.TabIndex = 5;
