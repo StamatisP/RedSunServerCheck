@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="no.wav" />
+    <Content Include="system_message_alert.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

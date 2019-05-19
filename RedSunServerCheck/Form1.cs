@@ -106,15 +106,9 @@ namespace RedSunServerCheck
             textBox1.Text = "";
             FormatTextbox((ServerInfo)raidenInfo);
             FormatTextbox((ServerInfo)armstrongInfo);
-            if (CheckIfFilterMatch(raidenInfo))
+            if (CheckIfFilterMatch(raidenInfo) || CheckIfFilterMatch(armstrongInfo)
             {
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Stamos\source\repos\RedSunServerCheck\RedSunServerCheck\no.wav");
-                player.Play();
-                Console.WriteLine("oh hell yea server available");
-            }
-            if (CheckIfFilterMatch(armstrongInfo))
-            {
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\Stamos\source\repos\RedSunServerCheck\RedSunServerCheck\no.wav");
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(Directory.GetCurrentDirectory() + @"\system_message_alert.wav");
                 player.Play();
                 Console.WriteLine("oh hell yea server available");
             }
