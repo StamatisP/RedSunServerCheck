@@ -106,7 +106,7 @@ namespace RedSunServerCheck
             textBox1.Text = "";
             FormatTextbox((ServerInfo)raidenInfo);
             FormatTextbox((ServerInfo)armstrongInfo);
-            if (CheckIfFilterMatch(raidenInfo) || CheckIfFilterMatch(armstrongInfo)
+            if (CheckIfFilterMatch(raidenInfo) || CheckIfFilterMatch(armstrongInfo))
             {
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(Directory.GetCurrentDirectory() + @"\system_message_alert.wav");
                 player.Play();
