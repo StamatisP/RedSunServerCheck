@@ -44,7 +44,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(33, 385);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 53);
+            this.button1.Size = new System.Drawing.Size(755, 53);
             this.button1.TabIndex = 0;
             this.button1.Text = "Send Request";
             this.button1.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(668, 359);
+            this.checkBox1.Location = new System.Drawing.Point(668, 320);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(88, 17);
             this.checkBox1.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(668, 418);
+            this.numericUpDown1.Location = new System.Drawing.Point(668, 356);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             86400,
             0,
@@ -97,7 +97,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(668, 399);
+            this.label1.Location = new System.Drawing.Point(665, 340);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 13);
             this.label1.TabIndex = 4;
@@ -116,14 +116,14 @@
             "Versus Saxton Hale",
             "Stop That Tank",
             "Tank Race"});
-            this.checkedListBox1.Location = new System.Drawing.Point(517, 269);
+            this.checkedListBox1.Location = new System.Drawing.Point(336, 207);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(145, 169);
             this.checkedListBox1.TabIndex = 5;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(376, 418);
+            this.numericUpDown2.Location = new System.Drawing.Point(33, 356);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             32,
             0,
@@ -141,7 +141,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(373, 399);
+            this.label2.Location = new System.Drawing.Point(30, 340);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 13);
             this.label2.TabIndex = 7;
