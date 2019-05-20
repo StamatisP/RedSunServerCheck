@@ -103,6 +103,7 @@ namespace RedSunServerCheck
             textBox1.Text = "";
             FormatTextbox((ServerInfo)raidenInfo);
             FormatTextbox((ServerInfo)armstrongInfo);
+            textBox1.AppendText("Last updated: " + DateTime.Now.ToString("h:mm tt"));
             if (CheckIfFilterMatch(raidenInfo) || CheckIfFilterMatch(armstrongInfo))
             {
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(Directory.GetCurrentDirectory() + @"\system_message_alert.wav");

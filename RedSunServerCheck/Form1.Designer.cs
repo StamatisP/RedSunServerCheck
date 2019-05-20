@@ -36,6 +36,7 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -118,10 +119,11 @@
             "Versus Saxton Hale",
             "Stop That Tank",
             "Tank Race",
-            "Prop Hunt"});
-            this.checkedListBox1.Location = new System.Drawing.Point(514, 207);
+            "Prop Hunt",
+            "Glass Attack"});
+            this.checkedListBox1.Location = new System.Drawing.Point(514, 222);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(145, 169);
+            this.checkedListBox1.Size = new System.Drawing.Size(145, 154);
             this.checkedListBox1.TabIndex = 5;
             // 
             // numericUpDown2
@@ -150,11 +152,21 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Preferred Amount of Players";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(511, 206);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Preferred Gamemodes";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.checkedListBox1);
@@ -184,6 +196,7 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
