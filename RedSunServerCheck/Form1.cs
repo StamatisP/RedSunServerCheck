@@ -97,13 +97,20 @@ namespace RedSunServerCheck
 
         public void RequestInfo()
         {
-            raidenInfo = new A2S_INFO(raidenEndpoint);
-            armstrongInfo = new A2S_INFO(armstrongEndpoint);
+            try
+            {
+                raidenInfo = new A2S_INFO(raidenEndpoint);
+                armstrongInfo = new A2S_INFO(armstrongEndpoint);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             textBox1.Text = "";
             FormatTextbox((ServerInfo)raidenInfo);
             FormatTextbox((ServerInfo)armstrongInfo);
-            textBox1.AppendText("Last updated: " + DateTime.Now.ToString("h:mm tt"));
+            textBox1.AppendText("Last updated: " + DateTime.Now.ToString("h:mm:ss tt"));
             if (CheckIfFilterMatch(raidenInfo) || CheckIfFilterMatch(armstrongInfo))
             {
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(Directory.GetCurrentDirectory() + @"\system_message_alert.wav");

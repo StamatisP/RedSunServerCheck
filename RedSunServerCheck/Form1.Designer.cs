@@ -120,8 +120,9 @@
             "Stop That Tank",
             "Tank Race",
             "Prop Hunt",
-            "Glass Attack"});
-            this.checkedListBox1.Location = new System.Drawing.Point(514, 222);
+            "Glass Attack",
+            "Boss Fight"});
+            this.checkedListBox1.Location = new System.Drawing.Point(174, 222);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(145, 154);
             this.checkedListBox1.TabIndex = 5;
@@ -155,7 +156,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(511, 206);
+            this.label3.Location = new System.Drawing.Point(171, 206);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 8;
