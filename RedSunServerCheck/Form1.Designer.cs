@@ -121,7 +121,10 @@
             "Tank Race",
             "Prop Hunt",
             "Glass Attack",
-            "Boss Fight"});
+            "Boss Fight",
+            "Bombermod",
+            "Class Warfare",
+            "Team Fortress"});
             this.checkedListBox1.Location = new System.Drawing.Point(174, 222);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(145, 154);
