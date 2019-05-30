@@ -74,6 +74,7 @@ namespace RedSunServerCheck
             UdpClient udp = new UdpClient();
             udp.Send(REQUEST, REQUEST.Length, ep);
             MemoryStream ms = new MemoryStream(udp.Receive(ref ep));    // Saves the received data in a memory buffer
+            Console.WriteLine(ms.Length.ToString());
             BinaryReader br = new BinaryReader(ms, Encoding.UTF8);      // A binary reader that treats charaters as Unicode 8-bit
             ms.Seek(4, SeekOrigin.Begin);   // skip the 4 0xFFs
             Header = br.ReadByte();

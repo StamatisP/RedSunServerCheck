@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Timers;
 using Newtonsoft.Json;
 using System.IO;
+using System.Net.NetworkInformation;
 
 namespace RedSunServerCheck
 {
@@ -99,8 +100,8 @@ namespace RedSunServerCheck
         {
             try
             {
-                raidenInfo = new A2S_INFO(raidenEndpoint);
-                armstrongInfo = new A2S_INFO(armstrongEndpoint);
+                raidenInfo = RequestServerInfo(raidenAddr, raidenEndpoint);
+                armstrongInfo = RequestServerInfo(armstrongAddr, armstrongEndpoint);
             }
             catch(Exception e)
             {
@@ -174,6 +175,29 @@ namespace RedSunServerCheck
                 checkedListBox1.SetItemChecked(checkedListBox1.FindString(input[i]), true);
             }
             
+        }
+
+        A2S_INFO RequestServerInfo(IPAddress ipaddr, IPEndPoint endpoint)
+        {
+            var ping = new Ping();
+            var result = ping.Send(ipaddr);
+
+            if (result.Status != IPStatus.Success)
+            {
+                return null;
+            }
+            else
+            {
+                try
+                {
+                    return new A2S_INFO(endpoint);
+                }
+                catch(Exception e)
+                {
+                    return null;
+                }
+            }
+                
         }
     }
 }
